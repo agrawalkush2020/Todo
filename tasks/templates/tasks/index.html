@@ -5,22 +5,28 @@
     <title>Home</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="p-[0] m-[0] bg-[#41f63bbd]">
-    <div id="header_base" class="flex justify-between w-[90%] m-[auto]">
-        <div>To-Do</div>
-        <div>
+<body class="p-[0] m-[0] bg-[#306deabd]">
+    <div id="header_base" class="flex justify-between w-[90%] m-auto text-[30px] items-center py-4">
+        <div class="font-bold text-gray-800">To-Do</div>
+        <div class="p-4 bg-gray-100 rounded-lg shadow-md">
             {% if user.is_authenticated %}
-                <a href="{% url 'logout' %}">Logout</a>
+                <a href="{% url 'logout' %}" class="text-white bg-red-500 hover:bg-red-700 font-bold py-2 px-4 rounded">
+                    Logout
+                </a>
             {% else %}
-                <div>
-                    <a href="{% url 'signup' %}">Signup</a>
-                    <a href="{% url 'login' %}">Login</a>
+                <div class="flex space-x-4">
+                    <a href="{% url 'signup' %}" class="text-white bg-blue-500 hover:bg-blue-700 font-bold py-2 px-4 rounded">
+                        Signup
+                    </a>
+                    <a href="{% url 'login' %}" class="text-white bg-green-500 hover:bg-green-700 font-bold py-2 px-4 rounded">
+                        Login
+                    </a>
                 </div>
             {% endif %}
         </div>
     </div>
 
-    <div id="header" class="flex bg-[#2dad40] justify-center text-[37px] text-[white] font-['serif']">
+    <div id="header" class="flex bg-[#306deabd] justify-center text-[37px] text-[white] font-['serif']">
         <h1>Your-Tasks</h1>
     </div>
     <div id="tasks" class="w-[100%] flex justify-center flex-col items-center mt-[20px]">

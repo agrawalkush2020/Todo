@@ -3,21 +3,27 @@
 {% block title %}Sign-Up{% endblock %}
 
 {% block content %}
-<h1>Register</h1>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Sign-Up</button>
-</form>
-{% if form.errors %}
-    <div class="errors">
-        <ul>
-            {% for field in form %}
-                {% if field.errors %}
-                    <li>{{ field.label }}: {{ field.errors }}</li>
-                {% endif %}
-            {% endfor %}
-        </ul>
-    </div>
-{% endif %}
+
+<div class="w-full max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
+    <h1 class="text-2xl font-bold mb-6 text-center text-gray-800">Register</h1>
+    <form method="post" class="space-y-4">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+            Sign-Up
+        </button>
+    </form>
+    {% if form.errors %}
+        <div class="errors mt-4 p-4 bg-red-100 text-red-700 border border-red-400 rounded">
+            <ul class="list-disc list-inside">
+                {% for field in form %}
+                    {% if field.errors %}
+                        <li><strong>{{ field.label }}:</strong> {{ field.errors }}</li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+</div>
+
 {% endblock %}
