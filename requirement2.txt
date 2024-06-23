@@ -1,0 +1,12 @@
+Super User
+username: admin
+email: admin2024@gmail.com
+password: temp
+
+
+heroku pr ho ni paaya bcz it is no more longer free
+-------------------------------
+
+
+
+
