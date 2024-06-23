@@ -2,10 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    {% for form in forms%}
+<body class="p-[0] m-[0] bg-[#41f63bbd]">
+    <div id="header_base" class="flex justify-between w-[90%] m-[auto]">
+        <div>To-Do</div>
+        <div>
+            {% if user.is_authenticated %}
+                <a href="{% url 'logout' %}">Logout</a>
+            {% else %}
+                <div>
+                    <a href="{% url 'signup' %}">Signup</a>
+                    <a href="{% url 'login' %}">Login</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
 
+    <div id="header" class="flex bg-[#2dad40] justify-center text-[37px] text-[white] font-['serif']">
+        <h1>Your-Tasks</h1>
+    </div>
+    <div id="tasks" class="w-[100%] flex justify-center flex-col items-center mt-[20px]">
+        {% for task in tasks %}
+            <div class="text-left text-[25px]   w-fit hover:rounded-lg "> {{ forloop.counter }}. {{ task.value }}</div>
+        {% endfor %}
+    </div>
+    <div class="w-[100%] flex justify-center flex-col items-center mt-[5px]" >
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="value">
+            <button type="submit">Add</button>
+        </form>
+    </div>
 </body>
 </html>

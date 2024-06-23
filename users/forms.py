@@ -10,16 +10,14 @@ class UserRegistrationForm(forms.ModelForm):
         model = Person
         fields = ['username', 'email', 'password1', 'password2']
 
-
-    def clean_password1(self):
+    def clean_password2(self):
         password1 = self.cleaned_data.get("password1", None)
         password2 = self.cleaned_data.get("password2", None)
 
         if password1 != password2:
             raise forms.ValidationError("passwords do Not match !")
 
-        return password1
-
+        return password2
     # phle form instance banaate hee built-in validations chlti hain
     # cleaned_data banta hai first step mein ke baad
     # then jb is_valid() likhte hain toh custom validations chlti hain

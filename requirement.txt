@@ -1,0 +1,10 @@
+Super User
+username: admin
+email: admin2024@gmail.com
+password: temp
+
+-------------------------------
+
+
+
+
